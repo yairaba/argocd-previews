@@ -10,13 +10,13 @@ spec:
   sourceRepos:
   - '*'
   destinations:
-  - name: {{ .Values.project_destination_name }}
+  - name: {{ .Values.destination_name }}
     namespace: root-previews
     #server: {{ .Values.project_destination_server }}
-  - name: {{ .Values.project_destination_name }}
+  - name: {{ .Values.destination_name }}
     namespace: "pr-*"
     #server: {{ .Values.project_destination_server }}
-  - name: {{ .Values.project_destination_name }}
+  - name: {{ .Values.destination_name }}
     namespace: argocd
     #server: {{ .Values.project_destination_server }}
   clusterResourceWhitelist:

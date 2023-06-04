@@ -12,9 +12,36 @@ spec:
     targetRevision: master
     path: helm
   destination:
-    server: https://kubernetes.default.svc
+    #server: https://kubernetes.default.svc
+    name: {{ .Values.destination_name }}
     namespace: root-previews
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
+
+
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: root-apps-{{ .Values.application_stage_name }}-{{ .Values.application_env_name }}
+#   # You'll usually want to add your resources to the argocd namespace.
+#   namespace: {{ .Values.application_metadata_namespace }}
+#   # Add a this finalizer ONLY if you want these to cascade delete.
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   # The project the application belongs to.
+#   project:  {{ .Values.application_project }}
+#   source:
+#     repoURL: {{ .Values.application_source_repo_url }}
+#     targetRevision: {{ .Values.targetRevision }}
+#     path: {{ .Values.application_source_path }}
+#     helm:
+#       valueFiles:
+#         - config/{{ .Values.application_stage_name }}/values-{{ .Values.application_env_name }}.yaml
+#   destination:
+#     name: {{ .Values.application_destination_name }}
+#     namespace: {{ .Values.application_destination_namespace }}
+#   syncPolicy:
+#     automated: {}
