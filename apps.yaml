@@ -9,7 +9,7 @@ spec:
   project: previews
   source:
     repoURL: https://github.com/yairaba/argocd-previews.git
-    targetRevision: HEAD
+    targetRevision: master
     path: helm
   destination:
     server: https://kubernetes.default.svc
