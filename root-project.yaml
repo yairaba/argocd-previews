@@ -1,0 +1,53 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: proj-root-previews
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: TaKadu Root Previews Project
+  sourceRepos:
+  - '*'
+  destinations:
+  - name: in-cluster
+    namespace: root-previews-ns
+    #server: {{ .Values.project_destination_server }}
+  - name: in-cluster
+    namespace: "pr-*"
+    #server: {{ .Values.project_destination_server }}
+  - name: in-cluster
+    namespace: argocd
+    #server: {{ .Values.project_destination_server }}
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  namespaceResourceWhitelist:
+  - group: "*"
+    kind: "*"
+
+
+# apiVersion: argoproj.io/v1alpha1
+# kind: AppProject
+# metadata:
+#   name: proj-{{ .Values.application_stage_name }}-{{ .Values.application_env_name }}
+#   namespace: {{ .Values.project_metadata_namespace }}
+#   # Finalizer that ensures that project is not deleted until it is not referenced by any application
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   clusterResourceWhitelist:
+#     - group: '*'
+#       kind: '*'
+#   description: Takadu argocd  project .
+#   destinations:
+#     - name: {{ .Values.project_destination_name }}
+#       namespace: '*'
+#       server: {{ .Values.project_destination_server }}
+#   namespaceResourceWhitelist:
+#     - group: '*'
+#       kind: '*'
+#   sourceRepos:
+#     - '*'
+# status: {}
+

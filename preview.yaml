@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: previews
+  project: proj-root-previews
   source:
     path: helm
     repoURL: https://github.com/yairaba/{{.REPO}}.git
@@ -19,8 +19,9 @@ spec:
           host: "{{.HOSTNAME}}"
       version: v3
   destination:
+    name: in-cluster
     namespace: "{{.APP_ID}}"
-    server: https://kubernetes.default.svc
+    #server: https://kubernetes.default.svc
   syncPolicy:
     automated:
       selfHeal: true
