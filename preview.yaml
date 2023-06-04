@@ -10,7 +10,7 @@ spec:
   source:
     path: helm
     repoURL: https://github.com/yairaba/{{.REPO}}.git
-    targetRevision: HEAD
+    targetRevision: feature/test
     helm:
       values: |
         image:
