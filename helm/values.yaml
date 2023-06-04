@@ -1,0 +1,14 @@
+# # Application tkd-root-application
+# application_stage_name: "local"
+# application_env_name: "env1"
+# application_metadata_namespace: "argocd"
+# application_destination_namespace: "argocd"
+# application_destination_name: "in-cluster"
+# application_project: "default"
+# application_source_repo_url: "https://tkd-bitbucket-api@bitbucket.org/takadu/tkdcd.git"
+# application_source_path: "tkd-apps-set"
+# targetRevision: "feature/docker"
+
+# Root Preview Project
+project_destination_name: "in-cluster"
+project_destination_server: "https://kubernetes.default.svc"

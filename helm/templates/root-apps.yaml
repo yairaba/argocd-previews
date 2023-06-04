@@ -6,13 +6,14 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: root-previews
+  project: proj-root-previews
   source:
     repoURL: https://github.com/yairaba/argocd-previews.git
     targetRevision: master
     path: helm
   destination:
-    server: https://kubernetes.default.svc
+    #server: https://kubernetes.default.svc
+    name: {{ .Values.project_destination_name }}
     namespace: root-previews
   syncPolicy:
     automated:
