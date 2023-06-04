@@ -1,0 +1,30 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: pr-test1-1
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: pr-test1-1
+  project: proj-root-previews
+  source:
+    helm:
+      values: |
+        image:
+          tag: "2.9.9"
+        ingress:
+          host: "pr-test2-7.192.168.40.200.nip.io"
+      version: v3
+    path: helm
+    repoURL: https://github.com/yairaba/devops-toolkit.git
+    targetRevision: test1
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
