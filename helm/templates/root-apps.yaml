@@ -12,8 +12,7 @@ spec:
     targetRevision: master
     path: helm
   destination:
-    #server: https://kubernetes.default.svc
-    name: {{ .Values.project_destination_name }}
+    server: https://kubernetes.default.svc
     namespace: root-previews
   syncPolicy:
     automated:
