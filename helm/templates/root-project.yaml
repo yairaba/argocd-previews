@@ -11,7 +11,7 @@ spec:
   - '*'
   destinations:
   - name: {{ .Values.destination_name }}
-    namespace: root-previews
+    namespace: root-previews-ns
     #server: {{ .Values.project_destination_server }}
   - name: {{ .Values.destination_name }}
     namespace: "pr-*"

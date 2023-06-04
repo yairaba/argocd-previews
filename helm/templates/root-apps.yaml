@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root-previews
+  name: envs-root-previews
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -14,7 +14,7 @@ spec:
   destination:
     #server: https://kubernetes.default.svc
     name: {{ .Values.destination_name }}
-    namespace: root-previews
+    namespace: root-previews-ns
   syncPolicy:
     automated:
       selfHeal: true
